@@ -10,6 +10,8 @@ import ProfileSvg from '../assets/profile.svg';
 import { useTheme } from "native-base";
 import { Platform } from "react-native";
 
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 type AppRoutes = {
   home: undefined;
   history: undefined;
@@ -21,12 +23,14 @@ const { Navigator, Screen } = createBottomTabNavigator<AppRoutes>();
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
 
+
 export function AppRoutes(){
   const { sizes, colors } = useTheme();
   const iconSize = sizes[6]
 
   return(
     <Navigator 
+      backBehavior= 'history'
       screenOptions={{
         headerShown: false, 
         tabBarShowLabel: false, 
